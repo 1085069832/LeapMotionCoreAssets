@@ -16,26 +16,27 @@ public class CamRecorder : MonoBehaviour
   public bool optionalSyncCamFOV = true;
   public bool optionalSyncCamLayers = true;
 
-  [HideInInspector]
+  [System.NonSerialized]
   public float duration = 0.0f;
-  [HideInInspector]
+  [System.NonSerialized]
   public string directory = "";
-  [HideInInspector]
-  public int framesExpect = 0; // Number of all frames expected to record
-  [HideInInspector]
-  public int framesActual = 0; // Number of all frames actually recorded
-  [HideInInspector]
-  public int framesDropped = 0; // Number of frames not recorded after countdown but expected
-  [HideInInspector]
-  public int framesCountdown = 0; // Number of frames recorded during countdown
-  [HideInInspector]
-  public int framesSucceeded = 0; // Number of frames recorded after countdown
-  [HideInInspector]
-  public float countdownRemaining = 0.0f;
-  [HideInInspector]
+  [System.NonSerialized]
   public bool useHighResolution = false;
-  [HideInInspector]
-  public int currFrameIndex = 0;
+
+  public int framesExpect { get { return m_framesExpect; } }
+  protected int m_framesExpect = 0; // Number of all frames expected to record
+  public int framesActual { get { return m_framesActual; } }
+  protected int m_framesActual = 0; // Number of all frames actually recorded
+  public int framesDropped { get { return m_framesDropped; } }
+  protected int m_framesDropped = 0; // Number of frames not recorded after countdown but expected
+  public int framesCountdown { get { return m_framesCountdown; } }
+  protected int m_framesCountdown = 0; // Number of frames recorded during countdown
+  public int framesSucceeded { get { return m_framesSucceeded; } }
+  protected int m_framesSucceeded = 0; // Number of frames recorded after countdown
+  public int currFrameIndex { get { return m_currFrameIndex; } }
+  protected int m_currFrameIndex = 0;
+  public float countdownRemaining { get { return m_countdownRemaining; } }
+  protected float m_countdownRemaining = 0.0f;
 
   // Objects required to record a camera
   private Camera m_camera;
@@ -92,17 +93,17 @@ public class CamRecorder : MonoBehaviour
         m_camera.enabled = true;
         PrepareCamRecorder();
         LogComment("CamRecorderState.Countdown");
-        countdownRemaining = Mathf.Max(countdownRemaining, 0.0f);
+        m_countdownRemaining = Mathf.Max(m_countdownRemaining, 0.0f);
         m_startCountdownTime = Time.time;
         m_targetTime = m_startCountdownTime + m_targetInterval;
-        m_startRecordTime = m_startCountdownTime + countdownRemaining;
-        currFrameIndex = -1; // Countdown Frames have negative frame index
+        m_startRecordTime = m_startCountdownTime + m_countdownRemaining;
+        m_currFrameIndex = -1; // Countdown Frames have negative frame index
         StartWorker(m_tempWorker, m_tempQueue, TempWorkerState.Save);
         break;
       case CamRecorderState.Recording:
         LogComment("CamRecorderState.Recording");
         m_targetTime = m_startRecordTime + m_targetInterval;
-        currFrameIndex = 0; // Expect Frames have positive frame index
+        m_currFrameIndex = 0; // Expect Frames have positive frame index
         break;
       case CamRecorderState.Processing:
         LogComment("CamRecorderState.Processing");
@@ -153,11 +154,11 @@ public class CamRecorder : MonoBehaviour
     LogComment("StopProcessing Triggered");
     if (m_state == CamRecorderState.Processing)
     {
-      LogComment("Frames recorded after countdown: " + framesSucceeded.ToString());
-      LogComment("Frames recorded during countdown: " + framesCountdown.ToString());
-      LogComment("Frames dropped: " + framesDropped.ToString());
-      LogComment("Frames actually recorded: " + framesActual.ToString());
-      LogComment("Frames expected to record: " + framesExpect.ToString());
+      LogComment("Frames recorded after countdown: " + m_framesSucceeded.ToString());
+      LogComment("Frames recorded during countdown: " + m_framesCountdown.ToString());
+      LogComment("Frames dropped: " + m_framesDropped.ToString());
+      LogComment("Frames actually recorded: " + m_framesActual.ToString());
+      LogComment("Frames expected to record: " + m_framesExpect.ToString());
       SetState(CamRecorderState.Idle);
     }
   }
@@ -171,7 +172,7 @@ public class CamRecorder : MonoBehaviour
   public void RemoveLayersToIgnore(int layer) { m_layersToIgnore &= ~(1 << layer); }
   public void ResetLayersToIgnore() { m_layersToIgnore = 0; }
 
-  public void SetCountdown(float seconds) { countdownRemaining = seconds; }
+  public void SetCountdown(float seconds) { m_countdownRemaining = seconds; }
 
   private string GetFullPath(string filename) { return directory + "/" + filename; }
   private string GetDataPath(int index)
@@ -186,7 +187,7 @@ public class CamRecorder : MonoBehaviour
   private void DropFrame(int frameIndex)
   {
     LogError("Frame#" + frameIndex.ToString() + " dropped");
-    framesDropped++;
+    m_framesDropped++;
     m_framesDroppedList.Add(frameIndex);
   }
 
@@ -347,11 +348,11 @@ public class CamRecorder : MonoBehaviour
         writer = new BinaryWriter(File.Open(GetDataPath(data.Key), FileMode.Create));
         writer.Write(data.Value);
         writer.Close();
-        framesActual++;
+        m_framesActual++;
         if (data.Key > 0)
-          framesSucceeded++;
+          m_framesSucceeded++;
         else
-          framesCountdown++;
+          m_framesCountdown++;
       }
       catch (IOException) 
       {
@@ -362,7 +363,7 @@ public class CamRecorder : MonoBehaviour
 
   private void SaveCameraTexture(int frameIndex)
   {
-    framesExpect++;
+    m_framesExpect++;
     m_currentRenderTexture = RenderTexture.active;
     RenderTexture.active = m_cameraRenderTexture;
     m_cameraTexture2D.ReadPixels(m_cameraRect, 0, 0, false);
@@ -375,9 +376,9 @@ public class CamRecorder : MonoBehaviour
   {
     if (Time.time > m_targetTime)
     {
-      SaveCameraTexture(currFrameIndex);
-      currFrameIndex--;
-      m_targetTime = m_startCountdownTime + m_targetInterval * (Mathf.Abs(currFrameIndex) + 1);
+      SaveCameraTexture(m_currFrameIndex);
+      m_currFrameIndex--;
+      m_targetTime = m_startCountdownTime + m_targetInterval * (Mathf.Abs(m_currFrameIndex) + 1);
     }
   }
 
@@ -386,9 +387,9 @@ public class CamRecorder : MonoBehaviour
     duration = Mathf.Max(Time.time - m_startRecordTime, 0.0f);
     if (Time.time > m_targetTime)
     {
-      SaveCameraTexture(currFrameIndex);
-      currFrameIndex++;
-      m_targetTime = m_startRecordTime + m_targetInterval * (Mathf.Abs(currFrameIndex) + 1);
+      SaveCameraTexture(m_currFrameIndex);
+      m_currFrameIndex++;
+      m_targetTime = m_startRecordTime + m_targetInterval * (Mathf.Abs(m_currFrameIndex) + 1);
     }
   }
 
@@ -429,7 +430,7 @@ public class CamRecorder : MonoBehaviour
     {
       File.Copy(GetDataPath(replaceIndex), GetDataPath(currIndex));
       LogComment("Detected Frame#" + currIndex.ToString() + " dropped. Replaced with Frame#" + replaceIndex.ToString());
-      framesActual++;
+      m_framesActual++;
     }
     catch (IOException)
     {
@@ -485,11 +486,11 @@ public class CamRecorder : MonoBehaviour
     }
     m_camera.cullingMask &= ~(m_layersToIgnore);
 
-    framesExpect = 0;
-    framesActual = 0;
-    framesDropped = 0;
-    framesCountdown = 0;
-    framesSucceeded = 0;
+    m_framesExpect = 0;
+    m_framesActual = 0;
+    m_framesDropped = 0;
+    m_framesCountdown = 0;
+    m_framesSucceeded = 0;
     m_fileExtension = (useHighResolution) ? ".png" : ".jpg";
 
     try
@@ -584,8 +585,8 @@ public class CamRecorder : MonoBehaviour
     switch (m_state)
     {
       case CamRecorderState.Countdown:
-        countdownRemaining = Mathf.Max(m_startRecordTime - Time.time, 0.0f);
-        if (countdownRemaining == 0.0f)
+        m_countdownRemaining = Mathf.Max(m_startRecordTime - Time.time, 0.0f);
+        if (m_countdownRemaining == 0.0f)
           SetState(CamRecorderState.Recording);
         else
           SaveBufTexture();
