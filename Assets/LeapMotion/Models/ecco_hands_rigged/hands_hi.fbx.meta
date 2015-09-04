@@ -1,0 +1,206 @@
+fileFormatVersion: 2
+guid: 8ff9a4d1e5b5fb247812289d2455f486
+timeCreated: 1441314515
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: geo_grp
+    100002: //RootNode
+    100004: lf_forearm_roll_a
+    100006: lf_forearm_roll_b
+    100008: lf_forearm_roll_c
+    100010: lf_forearm_roll_d
+    100012: lf_forearm_roll_e
+    100014: lf_forearm_roll_f
+    100016: lf_hand_hi_geo
+    100018: lf_index_a
+    100020: lf_index_b
+    100022: lf_index_c
+    100024: lf_index_end
+    100026: lf_index_meta
+    100028: lf_middle_a
+    100030: lf_middle_b
+    100032: lf_middle_c
+    100034: lf_middle_end
+    100036: lf_middle_meta
+    100038: lf_pinky_a
+    100040: lf_pinky_b
+    100042: lf_pinky_c
+    100044: lf_pinky_end
+    100046: lf_pinky_meta
+    100048: lf_ring_a
+    100050: lf_ring_b
+    100052: lf_ring_c
+    100054: lf_ring_end
+    100056: lf_ring_meta
+    100058: lf_thumb_a
+    100060: lf_thumb_b
+    100062: lf_thumb_end
+    100064: lf_thumb_meta
+    100066: lf_wrist
+    100068: rt_forearm_roll_a
+    100070: rt_forearm_roll_b
+    100072: rt_forearm_roll_c
+    100074: rt_forearm_roll_d
+    100076: rt_forearm_roll_e
+    100078: rt_forearm_roll_f
+    100080: rt_hand_hi_geo
+    100082: rt_index_a
+    100084: rt_index_b
+    100086: rt_index_c
+    100088: rt_index_end
+    100090: rt_index_meta
+    100092: rt_middle_a
+    100094: rt_middle_b
+    100096: rt_middle_c
+    100098: rt_middle_end
+    100100: rt_middle_meta
+    100102: rt_pinky_a
+    100104: rt_pinky_b
+    100106: rt_pinky_c
+    100108: rt_pinky_end
+    100110: rt_pinky_meta
+    100112: rt_ring_a
+    100114: rt_ring_b
+    100116: rt_ring_c
+    100118: rt_ring_end
+    100120: rt_ring_meta
+    100122: rt_thumb_a
+    100124: rt_thumb_b
+    100126: rt_thumb_end
+    100128: rt_thumb_meta
+    100130: rt_wrist
+    400000: geo_grp
+    400002: //RootNode
+    400004: lf_forearm_roll_a
+    400006: lf_forearm_roll_b
+    400008: lf_forearm_roll_c
+    400010: lf_forearm_roll_d
+    400012: lf_forearm_roll_e
+    400014: lf_forearm_roll_f
+    400016: lf_hand_hi_geo
+    400018: lf_index_a
+    400020: lf_index_b
+    400022: lf_index_c
+    400024: lf_index_end
+    400026: lf_index_meta
+    400028: lf_middle_a
+    400030: lf_middle_b
+    400032: lf_middle_c
+    400034: lf_middle_end
+    400036: lf_middle_meta
+    400038: lf_pinky_a
+    400040: lf_pinky_b
+    400042: lf_pinky_c
+    400044: lf_pinky_end
+    400046: lf_pinky_meta
+    400048: lf_ring_a
+    400050: lf_ring_b
+    400052: lf_ring_c
+    400054: lf_ring_end
+    400056: lf_ring_meta
+    400058: lf_thumb_a
+    400060: lf_thumb_b
+    400062: lf_thumb_end
+    400064: lf_thumb_meta
+    400066: lf_wrist
+    400068: rt_forearm_roll_a
+    400070: rt_forearm_roll_b
+    400072: rt_forearm_roll_c
+    400074: rt_forearm_roll_d
+    400076: rt_forearm_roll_e
+    400078: rt_forearm_roll_f
+    400080: rt_hand_hi_geo
+    400082: rt_index_a
+    400084: rt_index_b
+    400086: rt_index_c
+    400088: rt_index_end
+    400090: rt_index_meta
+    400092: rt_middle_a
+    400094: rt_middle_b
+    400096: rt_middle_c
+    400098: rt_middle_end
+    400100: rt_middle_meta
+    400102: rt_pinky_a
+    400104: rt_pinky_b
+    400106: rt_pinky_c
+    400108: rt_pinky_end
+    400110: rt_pinky_meta
+    400112: rt_ring_a
+    400114: rt_ring_b
+    400116: rt_ring_c
+    400118: rt_ring_end
+    400120: rt_ring_meta
+    400122: rt_thumb_a
+    400124: rt_thumb_b
+    400126: rt_thumb_end
+    400128: rt_thumb_meta
+    400130: rt_wrist
+    4300000: lf_hand_hi_geo
+    4300002: rt_hand_hi_geo
+    9500000: //RootNode
+    13700000: lf_hand_hi_geo
+    13700002: rt_hand_hi_geo
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
