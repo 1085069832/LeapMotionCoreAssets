@@ -46,6 +46,14 @@ float2 LeapGetUndistortedUV(float4 screenPos){
   return float2(DecodeFloatRG(distortionAmount.xy), DecodeFloatRG(distortionAmount.zw)) * 2.3 - float2(0.6, 0.6);
 }
 
+float4 LeapDistortionMapScreenPos(float4 screenPos) {
+	float2 uv = (screenPos.xy / screenPos.w) * 2 - float2(1, 1);
+    float2 tangent = (uv + _LeapProjection.xy) / _LeapProjection.zw;
+	float2 distortionUV = 0.125 * tangent + float2(0.5, 0.5);
+	float4 distortionAmount = tex2D(_LeapDistortion, distortionUV);
+	return distortionAmount;
+}
+
 float LeapRawBrightnessUV(float2 uv){
   #if LEAP_FORMAT_IR
     return tex2D(_LeapTexture, uv).a;

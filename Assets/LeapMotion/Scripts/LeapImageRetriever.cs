@@ -116,6 +116,7 @@ public class LeapImageRetriever : MonoBehaviour
     projection.y = 0f;
     projection.z = camera.projectionMatrix [0, 0];
     projection.w = camera.projectionMatrix [1, 1];
+    Debug.Log("projection: " + projection);
     material.SetVector ("_LeapProjection", projection);
 
     if (_distortion == null) {
