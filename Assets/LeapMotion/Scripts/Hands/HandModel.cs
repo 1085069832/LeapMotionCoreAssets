@@ -265,8 +265,6 @@ public abstract class HandModel : MonoBehaviour {
         fingers[f].InitFinger();
       }
     }
-
-    UpdateHand ();
   }
 
   /**
