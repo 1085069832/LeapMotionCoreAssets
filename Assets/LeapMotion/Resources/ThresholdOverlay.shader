@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "LeapMotion/Passthrough/ThresholdOverlay" {
+﻿Shader "LeapMotion/Passthrough/ThresholdOverlay" {
   Properties {
     _Min ("Min Brightness", Range(0, 1)) = 0.1
     _Max ("Max Brightness", Range(0, 1)) = 0.3
@@ -36,7 +34,7 @@ Shader "LeapMotion/Passthrough/ThresholdOverlay" {
 
     frag_in vert(appdata_img v){
       frag_in o;
-      o.position = UnityObjectToClipPos(v.vertex);
+      o.position = mul(UNITY_MATRIX_MVP, v.vertex);
       o.screenPos = LeapGetWarpedScreenPos(o.position);
       return o;
     }

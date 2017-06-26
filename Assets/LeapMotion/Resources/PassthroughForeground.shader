@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "LeapMotion/Passthrough/Foreground" {
+﻿Shader "LeapMotion/Passthrough/Foreground" {
   Properties {
   }
 
@@ -31,7 +29,7 @@ Shader "LeapMotion/Passthrough/Foreground" {
 
     frag_in vert(appdata_img v){
       frag_in o;
-      o.position = UnityObjectToClipPos(v.vertex);
+      o.position = mul(UNITY_MATRIX_MVP, v.vertex);
       o.screenPos = LeapGetWarpedScreenPos(o.position);
       return o;
     }
