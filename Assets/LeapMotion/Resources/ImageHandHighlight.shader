@@ -1,5 +1,3 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
 Shader "LeapMotion/Passthrough/ImageHandHighlight" {
   Properties {
     _Color           ("Color", Color)                  = (0.165,0.337,0.578,1.0)
@@ -52,7 +50,7 @@ Shader "LeapMotion/Passthrough/ImageHandHighlight" {
 
   frag_in vert(appdata v) {
     frag_in o;
-    o.vertex = UnityObjectToClipPos(v.vertex);
+    o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
 
     float3 norm   = mul ((float3x3)UNITY_MATRIX_IT_MV, v.normal);
     o.vertex.xy += TransformViewToProjection(norm.xy) * _Extrude;
