@@ -7,6 +7,8 @@
 using UnityEngine;
 using System.Collections;
 using Leap;
+using Leap.Unity;
+using System;
 
 /**
 * A deforming, very low poly count hand.
@@ -15,9 +17,16 @@ using Leap;
 * for the palm or the arm.
 */
 public class PolyHand : HandModel {
+    public override ModelType HandModelType
+    {
+        get
+        {
+            throw new NotImplementedException();
+        }
+    }
 
-  /** Initializes the hand and calls the finger initializers. */
-  public override void InitHand() {
+    /** Initializes the hand and calls the finger initializers. */
+    public override void InitHand() {
     SetPalmOrientation();
 
     for (int f = 0; f < fingers.Length; ++f) {

@@ -8,6 +8,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 using Leap;
+using Leap.Unity;
 
 /** Draws the bones of the finger as a polygonal tube. **/
 public class PolyFinger : FingerModel {

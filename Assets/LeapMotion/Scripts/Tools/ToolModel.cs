@@ -7,6 +7,7 @@
 using UnityEngine;
 using System.Collections;
 using Leap;
+using UnityEditor;
 
 // NOTE: This file is a work in progress, changes to come.
 /** 

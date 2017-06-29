@@ -4,6 +4,7 @@ using UnityEditor;
 #endif
 using UnityEngine.Serialization;
 using System.Collections;
+using Leap.Unity;
 
 [System.Serializable]
 public struct LMHeadMountedRigConfiguration {

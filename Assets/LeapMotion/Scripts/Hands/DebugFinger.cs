@@ -11,7 +11,8 @@ using Leap;
 /**
 * The finger model for our debugging. Draws debug lines for each bone.
 */
-public class DebugFinger : FingerModel {
+public class DebugFinger : Leap.Unity.FingerModel
+{
 
   /** The colors used for each bone. */
   protected Color[] colors = {Color.yellow, Color.green, Color.cyan, Color.blue};

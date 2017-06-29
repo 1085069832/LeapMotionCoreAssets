@@ -7,6 +7,8 @@
 using UnityEngine;
 using System.Collections;
 using Leap;
+using Leap.Unity;
+using System;
 
 // Class to setup a rigged hand based on a model.
 public class RiggedHand : HandModel {
@@ -14,7 +16,15 @@ public class RiggedHand : HandModel {
   public Vector3 modelFingerPointing = Vector3.forward;
   public Vector3 modelPalmFacing = -Vector3.up;
 
-  public override void InitHand() {
+    public override ModelType HandModelType
+    {
+        get
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public override void InitHand() {
     UpdateHand();
   }
 

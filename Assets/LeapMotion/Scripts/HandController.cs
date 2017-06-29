@@ -8,6 +8,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using Leap;
 using System;
+using Leap.Unity;
+using UnityEditor;
 
 /**
 * The Controller object that instantiates hands and tools to represent the hands and tools tracked
@@ -354,7 +356,7 @@ public class HandController : MonoBehaviour {
   protected ToolModel CreateTool(ToolModel model) {
     ToolModel tool_model = Instantiate(model, transform.position, transform.rotation) as ToolModel;
     tool_model.gameObject.SetActive(true);
-    Leap.Utils.IgnoreCollisions(tool_model.gameObject, gameObject);
+    Utils.IgnoreCollisions(tool_model.gameObject, gameObject);
     return tool_model;
   }
 

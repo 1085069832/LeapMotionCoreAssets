@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Leap.Unity;
 
 /// <summary>
 /// Demo queues for TouchCube scene. Names are hard-coded -> replace with Mecanim scripting

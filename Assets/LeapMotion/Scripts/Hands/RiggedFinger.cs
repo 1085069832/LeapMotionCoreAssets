@@ -7,6 +7,7 @@
 using UnityEngine;
 using System.Collections;
 using Leap;
+using Leap.Unity;
 
 /**
  * Manages the orientation of the bones in a model rigged for skeletal animation.

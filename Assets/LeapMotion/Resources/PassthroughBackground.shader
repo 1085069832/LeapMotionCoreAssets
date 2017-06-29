@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "LeapMotion/Passthrough/Background" {
+﻿Shader "LeapMotion/Passthrough/Background" {
   SubShader {
     Tags {"Queue"="Background" "IgnoreProjector"="True"}
 
