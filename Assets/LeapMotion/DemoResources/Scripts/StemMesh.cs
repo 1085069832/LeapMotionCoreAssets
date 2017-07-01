@@ -36,7 +36,6 @@ public class StemMesh : MonoBehaviour {
   }
 
   void Update () {
-
     UpdateMesh();
     MeshFilter filter = GetComponent<MeshFilter>();
 
