@@ -7,6 +7,9 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// 展开花瓣
+/// </summary>
 public class FlowerBloom : MonoBehaviour {
 
   public AnimationCurve openCurve;
@@ -21,7 +24,7 @@ public class FlowerBloom : MonoBehaviour {
   private float phase_ = 1.0f;
 
   void Update() {
-    if (open)
+    if (open)//开启花瓣
       phase_ += Time.deltaTime / openTime;
     else
       phase_ -= Time.deltaTime / closeTime;
@@ -32,8 +35,8 @@ public class FlowerBloom : MonoBehaviour {
     float angle = closeAngle + percent_done * (openAngle - closeAngle);
 
     foreach (HingeJoint hinge in pedals) {
-      JointSpring spring = hinge.spring;
-      spring.targetPosition = angle;
+      JointSpring spring = hinge.spring;//弹簧
+      spring.targetPosition = angle;//设置弹簧拉向的角度
       hinge.spring = spring;
     }
   }
