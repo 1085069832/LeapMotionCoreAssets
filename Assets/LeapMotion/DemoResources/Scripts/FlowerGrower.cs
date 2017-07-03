@@ -40,9 +40,14 @@ public class FlowerGrower : MonoBehaviour
     //记录花的状态
     private bool growing_ = true;
     private bool dieing_ = false;
+    bool isIns;
+    [SerializeField] Transform pos;
+
+    [SerializeField] GameObject flower;
 
     void Start()
     {
+        //Instantiate(flower, transform.position + Vector3.right, transform.rotation);
         flower_head_scale_ = flowerHead.localScale;//记录花蕾自身缩放
         light_source_intensity_ = lightSource.intensity;//灯光
         flowerHead.localScale = Vector3.zero;//设置花中心自身缩放为0
@@ -128,6 +133,16 @@ public class FlowerGrower : MonoBehaviour
         //生长度达到1开启花
         if (growthProgress == 1.0f && flowerToBloom != null)
             flowerToBloom.open = true;
+
+        print("IsBroken" + IsBroken());
+
+        if (IsGrabbed() && !isIns)
+        {
+            dieing_ = true;
+            isIns = true;
+            Instantiate(flower, pos.position, Quaternion.identity);
+            print("生成花" + isIns);
+        }
     }
 
 }
