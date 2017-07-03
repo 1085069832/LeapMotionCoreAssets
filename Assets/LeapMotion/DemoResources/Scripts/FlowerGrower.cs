@@ -80,7 +80,7 @@ public class FlowerGrower : MonoBehaviour
         foreach (PetalMesh pedal in pedals)
             pedal.growthProgress = pedal_growth;
     }
-    //无引用******
+
     public void RemoveStump()
     {
         stem.RemoveStump();
@@ -116,8 +116,6 @@ public class FlowerGrower : MonoBehaviour
         }
         return false;
     }
-    //******
-
 
     void Update()
     {
@@ -131,4 +129,5 @@ public class FlowerGrower : MonoBehaviour
         if (growthProgress == 1.0f && flowerToBloom != null)
             flowerToBloom.open = true;
     }
+
 }
