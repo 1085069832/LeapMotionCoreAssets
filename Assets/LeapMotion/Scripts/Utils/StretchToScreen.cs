@@ -1,16 +1,20 @@
-﻿/******************************************************************************\
-* Copyright (C) Leap Motion, Inc. 2011-2014.                                   *
-* Leap Motion proprietary. Licensed under Apache 2.0                           *
-* Available at http://www.apache.org/licenses/LICENSE-2.0.html                 *
-\******************************************************************************/
+/******************************************************************************
+ * Copyright (C) Leap Motion, Inc. 2011-2017.                                 *
+ * Leap Motion proprietary and  confidential.                                 *
+ *                                                                            *
+ * Use subject to the terms of the Leap Motion SDK Agreement available at     *
+ * https://developer.leapmotion.com/sdk_agreement, or another agreement       *
+ * between Leap Motion and you, your company or other organization.           *
+ ******************************************************************************/
 
 using UnityEngine;
 using System.Collections;
 
-public class StretchToScreen : MonoBehaviour {
-
-  void Awake() {
-    GetComponent<GUITexture>().pixelInset = new Rect(0.0f, 0.0f, Screen.width, Screen.height);
+namespace Leap.Unity{
+  public class StretchToScreen : MonoBehaviour {
+  
+    void Awake() {
+      GetComponent<GUITexture>().pixelInset = new Rect(0.0f, 0.0f, Screen.width, Screen.height);
+    }
   }
 }
-

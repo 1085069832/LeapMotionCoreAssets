@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "LeapMotion/Passthrough/ThresholdOverlay" {
+﻿Shader "LeapMotion/Passthrough/ThresholdOverlay" {
   Properties {
     _Min ("Min Brightness", Range(0, 1)) = 0.1
     _Max ("Max Brightness", Range(0, 1)) = 0.3
